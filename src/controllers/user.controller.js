@@ -295,7 +295,7 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
 
   const avatar = await uploadOnCloudinary(avatarLocalPath);
 
-  if (!avatar) {
+  if (!avatar.url) {
     throw new ApiEroor(400, "Error while uploading avatar");
   }
 
@@ -313,13 +313,13 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
 const updateUserCoverImage = asyncHandler(async (req, res) => {
   const coverImageLocalPath = req.file?.path;
 
-  if (!coverImage) {
+  if (!coverImageLocalPath) {
     throw new ApiEroor(400, "File not found");
   }
 
   const coverImage = await uploadOnCloudinary(coverImageLocalPath);
 
-  if (!coverImage) {
+  if (!coverImage.url) {
     throw new ApiEroor(400, "Error while uploading coverImage");
   }
 

@@ -293,6 +293,10 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
     throw new ApiEroor(400, "File not found");
   }
 
+  /**
+   * TODO:- DELETE OLD IMG FROM THE CLOUDINARY- assignment
+   */
+
   const avatar = await uploadOnCloudinary(avatarLocalPath);
 
   if (!avatar.url) {
